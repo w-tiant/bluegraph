@@ -1,0 +1,428 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d9" for="edge" attr.name="file_path" attr.type="string" />
+  <key id="d8" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d7" for="edge" attr.name="keywords" attr.type="string" />
+  <key id="d6" for="edge" attr.name="description" attr.type="string" />
+  <key id="d5" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d4" for="node" attr.name="file_path" attr.type="string" />
+  <key id="d3" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d2" for="node" attr.name="description" attr.type="string" />
+  <key id="d1" for="node" attr.name="entity_type" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity_id" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="秦琼卖马">
+      <data key="d0">秦琼卖马</data>
+      <data key="d1">event</data>
+      <data key="d2">秦琼卖马是故事中的一个事件，讲述了主人公卖马的故事。&lt;SEP&gt;秦琼卖马是王超杰唱的曲目之一。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="谈歌">
+      <data key="d0">谈歌</data>
+      <data key="d1">person</data>
+      <data key="d2">谈歌是文本中的作者，创作了这篇故事。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="民国二十二年">
+      <data key="d0">民国二十二年</data>
+      <data key="d1">event</data>
+      <data key="d2">民国二十二年是故事发生的背景时间。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="保定城">
+      <data key="d0">保定城</data>
+      <data key="d1">geo</data>
+      <data key="d2">保定城是故事发生的地点。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="人力三轮">
+      <data key="d0">人力三轮</data>
+      <data key="d1">category</data>
+      <data key="d2">人力三轮是故事中出现的交通工具。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="古董店艺园斋">
+      <data key="d0">古董店艺园斋</data>
+      <data key="d1">organization</data>
+      <data key="d2">古董店艺园斋是故事中的重要场所。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="杨三">
+      <data key="d0">杨三</data>
+      <data key="d1">person</data>
+      <data key="d2">杨三是古董店艺园斋的伙计。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="韩定宝">
+      <data key="d0">韩定宝</data>
+      <data key="d1">person</data>
+      <data key="d2">韩定宝是古董店艺园斋的前老板。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="王超杰">
+      <data key="d0">王超杰</data>
+      <data key="d1">person</data>
+      <data key="d2">王超杰是一位戏曲表演者，演唱了《奇冤报》，得到了杨成岳的赞赏和报酬。&lt;SEP&gt;王超杰是故事中的主要人物，专攻老生，喜好收藏官窑彩瓷。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b&lt;SEP&gt;chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="柳条箱">
+      <data key="d0">柳条箱</data>
+      <data key="d1">category</data>
+      <data key="d2">柳条箱是王超杰携带的物品。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="杨成岳">
+      <data key="d0">杨成岳</data>
+      <data key="d1">person</data>
+      <data key="d2">杨成岳是一位欣赏戏曲的听众，与王超杰和张小武有交集，表现出慷慨和鉴赏力。&lt;SEP&gt;杨成岳是古董店艺园斋的现任老板。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b&lt;SEP&gt;chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="名片">
+      <data key="d0">名片</data>
+      <data key="d1">category</data>
+      <data key="d2">名片是王超杰用来介绍自己的物品。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="北方铁嗓">
+      <data key="d0">北方铁嗓</data>
+      <data key="d1">category</data>
+      <data key="d2">北方铁嗓是王超杰的外号。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="老生">
+      <data key="d0">老生</data>
+      <data key="d1">category</data>
+      <data key="d2">老生是王超杰的专业领域。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="中风">
+      <data key="d0">中风</data>
+      <data key="d1">event</data>
+      <data key="d2">中风是王超杰曾经患过的疾病。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="左腿不利落">
+      <data key="d0">左腿不利落</data>
+      <data key="d1">category</data>
+      <data key="d2">左腿不利落是王超杰中风后的后遗症。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="大褂">
+      <data key="d0">大褂</data>
+      <data key="d1">category</data>
+      <data key="d2">大褂是王超杰的穿着。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="伙计">
+      <data key="d0">伙计</data>
+      <data key="d1">category</data>
+      <data key="d2">伙计是杨三的职位。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="让座沏茶">
+      <data key="d0">让座沏茶</data>
+      <data key="d1">category</data>
+      <data key="d2">让座沏茶是杨三的服务行为。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="官窑彩瓷">
+      <data key="d0">官窑彩瓷</data>
+      <data key="d1">category</data>
+      <data key="d2">官窑彩瓷是王超杰收藏的物品。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="几只雍正官窑粉彩过枝碧桃大盘">
+      <data key="d0">几只雍正官窑粉彩过枝碧桃大盘</data>
+      <data key="d1">category</data>
+      <data key="d2">几只雍正官窑粉彩过枝碧桃大盘是王超杰带到艺园斋的物品。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="张小武">
+      <data key="d0">张小武</data>
+      <data key="d1">person</data>
+      <data key="d2">张小武是故事中的琴师。&lt;SEP&gt;张小武是杨成岳的朋友，一同欣赏王超杰的表演，对杨成岳的行为表示惊讶和理解。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b&lt;SEP&gt;chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="胡琴">
+      <data key="d0">胡琴</data>
+      <data key="d1">category</data>
+      <data key="d2">胡琴是张小武使用的乐器。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="唱戏">
+      <data key="d0">唱戏</data>
+      <data key="d1">category</data>
+      <data key="d2">唱戏是王超杰的表演形式。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="奇冤报">
+      <data key="d0">奇冤报</data>
+      <data key="d1">category</data>
+      <data key="d2">奇冤报是王超杰唱的曲目之一。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="店主东拉过了黄骠马">
+      <data key="d0">店主东拉过了黄骠马</data>
+      <data key="d1">category</data>
+      <data key="d2">店主东拉过了黄骠马是王超杰唱的唱词。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="秦叔宝珠泪洒下">
+      <data key="d0">秦叔宝珠泪洒下</data>
+      <data key="d1">category</data>
+      <data key="d2">秦叔宝珠泪洒下是王超杰唱的唱词。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="盖世英雄">
+      <data key="d0">盖世英雄</data>
+      <data key="d1">category</data>
+      <data key="d2">盖世英雄是秦叔宝的形容。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="落魄">
+      <data key="d0">落魄</data>
+      <data key="d1">category</data>
+      <data key="d2">落魄是秦叔宝的处境。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="壮志不减">
+      <data key="d0">壮志不减</data>
+      <data key="d1">category</data>
+      <data key="d2">壮志不减是杨成岳对秦叔宝的评价。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="单雄信">
+      <data key="d0">单雄信</data>
+      <data key="d1">person</data>
+      <data key="d2">单雄信是故事中的人物。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="保定">
+      <data key="d0">保定</data>
+      <data key="d1">geo</data>
+      <data key="d2">保定是故事发生的地点。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="客栈">
+      <data key="d0">客栈</data>
+      <data key="d1">category</data>
+      <data key="d2">客栈是王超杰住宿的地方。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="店钱饭钱">
+      <data key="d0">店钱饭钱</data>
+      <data key="d1">category</data>
+      <data key="d2">店钱饭钱是王超杰的费用。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="五百块大洋">
+      <data key="d0">五百块大洋</data>
+      <data key="d1">category</data>
+      <data key="d2">五百块大洋是王超杰对几只雍正官窑粉彩过枝碧桃大盘的估价。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="钱货两讫">
+      <data key="d0">钱货两讫</data>
+      <data key="d1">category</data>
+      <data key="d2">钱货两讫是王超杰和杨成岳的交易方式。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="王先生">
+      <data key="d0">王先生</data>
+      <data key="d1">person</data>
+      <data key="d2">王先生是对王超杰的称呼。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="杨老板">
+      <data key="d0">杨老板</data>
+      <data key="d1">person</data>
+      <data key="d2">杨老板是对杨成岳的称呼。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="门里人">
+      <data key="d0">门里人</data>
+      <data key="d1">category</data>
+      <data key="d2">门里人是杨成岳对王超杰的称呼。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="票友">
+      <data key="d0">票友</data>
+      <data key="d1">category</data>
+      <data key="d2">票友是杨成岳曾经的职业。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="坐论其道">
+      <data key="d0">坐论其道</data>
+      <data key="d1">category</data>
+      <data key="d2">坐论其道是杨成岳对王超杰的评价。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="贵干">
+      <data key="d0">贵干</data>
+      <data key="d1">category</data>
+      <data key="d2">贵干是杨成岳对王超杰的疑问。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="鉴赏">
+      <data key="d0">鉴赏</data>
+      <data key="d1">category</data>
+      <data key="d2">鉴赏是杨成岳对王超杰的要求。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="落魄商家">
+      <data key="d0">落魄商家</data>
+      <data key="d1">category</data>
+      <data key="d2">落魄商家是王超杰对几只雍正官窑粉彩过枝碧桃大盘的来源。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="地道上品">
+      <data key="d0">地道上品</data>
+      <data key="d1">category</data>
+      <data key="d2">地道上品是王超杰对几只雍正官窑粉彩过枝碧桃大盘的评价。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="生计所迫">
+      <data key="d0">生计所迫</data>
+      <data key="d1">category</data>
+      <data key="d2">生计所迫是王超杰卖几只雍正官窑粉彩过枝碧桃大盘的原因。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="小本生意">
+      <data key="d0">小本生意</data>
+      <data key="d1">category</data>
+      <data key="d2">小本生意是杨成岳对艺园斋的描述。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="不好言价">
+      <data key="d0">不好言价</data>
+      <data key="d1">category</data>
+      <data key="d2">不好言价是杨成岳对几只雍正官窑粉彩过枝碧桃大盘的回应。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="买卖不成仁义在">
+      <data key="d0">买卖不成仁义在</data>
+      <data key="d1">category</data>
+      <data key="d2">买卖不成仁义在是杨成岳对王超杰的安慰。</data>
+      <data key="d3">chunk-e5073303a9d66950ac956a038cd00b2b</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="《奇冤报》">
+      <data key="d0">《奇冤报》</data>
+      <data key="d1">event</data>
+      <data key="d2">《奇冤报》是王超杰演唱的一段戏曲，成为故事中的重要事件。</data>
+      <data key="d3">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="瓷盘">
+      <data key="d0">瓷盘</data>
+      <data key="d1">object</data>
+      <data key="d2">瓷盘是故事中出现的物品，被王超杰带来，后被杨成岳发现是赝品。</data>
+      <data key="d3">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="大洋">
+      <data key="d0">大洋</data>
+      <data key="d1">object</data>
+      <data key="d2">大洋是杨成岳给予王超杰的报酬，体现了交易的货币价值。</data>
+      <data key="d3">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="店里">
+      <data key="d0">店里</data>
+      <data key="d1">location</data>
+      <data key="d2">店里是故事发生的主要地点，杨成岳、王超杰和张小武在此互动。</data>
+      <data key="d3">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <node id="秋风">
+      <data key="d0">秋风</data>
+      <data key="d1">weather</data>
+      <data key="d2">秋风描述了故事结尾时的环境氛围，暗示了故事的情感基调。</data>
+      <data key="d3">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d4">unknown_source</data>
+    </node>
+    <edge source="王超杰" target="杨成岳">
+      <data key="d5">8.0</data>
+      <data key="d6">杨成岳欣赏王超杰的表演，给予他报酬，两人之间存在欣赏和交易的关系。</data>
+      <data key="d7">appreciation, transaction</data>
+      <data key="d8">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="王超杰" target="瓷盘">
+      <data key="d5">6.0</data>
+      <data key="d6">王超杰带来了瓷盘，后被杨成岳发现是赝品，两者之间存在欺骗和误解。</data>
+      <data key="d7">deception, misunderstanding</data>
+      <data key="d8">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="杨成岳" target="张小武">
+      <data key="d5">7.0</data>
+      <data key="d6">杨成岳和张小武是朋友，共同欣赏戏曲，张小武对杨成岳的行为表示理解。</data>
+      <data key="d7">friendship, mutual understanding</data>
+      <data key="d8">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="杨成岳" target="大洋">
+      <data key="d5">9.0</data>
+      <data key="d6">杨成岳给予王超杰大洋作为报酬，体现了交易的货币价值。</data>
+      <data key="d7">payment, monetary value</data>
+      <data key="d8">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+    <edge source="店里" target="秋风">
+      <data key="d5">5.0</data>
+      <data key="d6">店里是故事的主要地点，秋风描述了故事结尾时的环境氛围，暗示了故事的情感基调。</data>
+      <data key="d7">setting, atmosphere</data>
+      <data key="d8">chunk-591e846263a819b061e52c8a4a1cf50f</data>
+      <data key="d9">unknown_source</data>
+    </edge>
+  </graph>
+</graphml>
