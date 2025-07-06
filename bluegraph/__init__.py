@@ -86,6 +86,14 @@ def main():
             muti_input(after_insert)
 
         with graph_tab:
+            # --- 添加调试代码 ---
+            st.write(f"正在尝试从以下目录加载图谱: `{path}`")
+            if os.path.exists(path):
+                files_in_dir = os.listdir(path)
+                st.write(f"在该目录中找到的文件: `{files_in_dir}`")
+            else:
+                st.error(f"错误：目录 `{path}` 不存在！")
+            # --- 调试代码结束 ---
             # graph_viz 函数现在使用 session_state 中存储的路径
             graph_viz(path)
 
