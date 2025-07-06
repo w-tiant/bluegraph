@@ -1,131 +1,132 @@
 import streamlit as st
 import os
-import asyncio
 from lightrag import QueryParam
 
 # 你的其他模块导入
 from .rag import main as rag_init
-from .muti_input import muti_input  # 我们现在假设这个模块也需要被替换
+# from .muti_input import muti_input # 我们不再需要导入这个了
 from .graph_viz import view as graph_viz
 from .obj_viz import func as obj_viz
 from .data_viz import func as data_viz
+from .muti_input import extract_text_from_pdf, extract_text_from_docx
 
-# --- 替换 muti_input ---
-# 由于 muti_input 很可能也依赖 tkinter，我们用一个简单的 Streamlit 组件来替代它
-# 这个新函数的功能等同于你原始流程中的“第二次文件选择”
-def web_muti_input(callback_func):
-    """
-    一个用 Streamlit 实现的 muti_input 替代品。
-    它提供一个文件上传器和一个按钮，点击按钮后，将选中的文件路径列表传给回调函数。
-    """
-    st.subheader("步骤 2: 选择要解析的文件")
-    files_to_insert = st.file_uploader(
-        "从项目中选择文件进行解析",
-        accept_multiple_files=True,
-        type=['txt', 'md', 'docx', 'pdf'],
-        key="insert_uploader" # 使用 key 防止组件冲突
-    )
-
-    if st.button("开始解析选中的文件", type="primary"):
-        if files_to_insert:
-            # 获取上传文件的临时路径
-            # 注意：这里我们不能直接用文件名，因为 rag.insert 需要的是已保存文件的路径
-            # 我们需要从 session_state 中获取项目路径
-            project_path = st.session_state.get('project_path', 'temp_project')
-            
-            # 构建所选文件的完整路径列表
-            selected_file_paths = [os.path.join(project_path, f.name) for f in files_to_insert]
-            
-            # 调用你原始的回调函数
-            callback_func(selected_file_paths)
-        else:
-            st.warning("请至少选择一个文件进行解析。")
+from io import BytesIO
 
 # --- 核心 main 函数 ---
 def main():
-    st.set_page_config(layout="wide", page_title="交互式阅读图谱")
+    st.set_page_config(layout="wide", page_title="BlueGraph")
     st.title('BlueGraph')
 
-    # 使用 session_state 来存储关键信息，这是云端应用必需的
+    # session_state 管理
     if 'rag_instance' not in st.session_state:
         st.session_state.rag_instance = None
     if 'project_path' not in st.session_state:
         st.session_state.project_path = None
+    if 'graph_generated' not in st.session_state:
+        st.session_state.graph_generated = False
 
-    # --- 步骤 1: 创建项目 (替代你的 tkinter 文件夹选择) ---
-    # 只有当项目未创建时，才显示这部分
+
+    # --- 步骤 1: 创建项目工作目录 ---
     if not st.session_state.rag_instance:
-        st.header("步骤 1: 上传文档以创建项目")
-        st.info("在这里上传的文件将定义项目的工作目录和可用文件。")
+        st.header("步骤 1: 创建一个新项目")
+        st.info("在云端，我们需要先创建一个工作空间来存放您的图谱。")
         
-        uploaded_files = st.file_uploader(
-            "选择一个或多个初始文档",
-            accept_multiple_files=True,
-            type=['txt', 'md', 'docx', 'pdf'],
-            key="initial_uploader"
-        )
+        project_name = st.text_input("给您的项目起个名字", value="my_reading_project")
 
-        if uploaded_files and st.button("创建项目", type="primary"):
+        if st.button("创建并开始", type="primary"):
             with st.spinner("正在创建工作目录并初始化引擎..."):
-                temp_dir = "temp_project"
+                # 使用项目名创建唯一的临时目录
+                temp_dir = project_name
                 if not os.path.exists(temp_dir):
                     os.makedirs(temp_dir)
                 
-                for uploaded_file in uploaded_files:
-                    file_path = os.path.join(temp_dir, uploaded_file.name)
-                    with open(file_path, "wb") as f:
-                        f.write(uploaded_file.getbuffer())
-                
-                # 完全等同于你本地的 rag = rag_init(path)
+                # 初始化 RAG，仅仅告诉它工作目录是哪里
                 st.session_state.rag_instance = rag_init(temp_dir)
                 st.session_state.project_path = temp_dir
             
-            st.success("项目已创建！")
-            st.rerun() # 刷新页面以显示主功能区
+            st.success(f"项目 '{project_name}' 已创建！")
+            st.rerun()
 
-    # --- 主功能区 (项目创建后显示，完全模拟你的 fragment 结构) ---
+    # --- 主功能区 ---
     if st.session_state.rag_instance:
         rag = st.session_state.rag_instance
         path = st.session_state.project_path
         
-        # 你的原标签页结构
         insert_tab, graph_tab, query_tab, obj_tab, origin_tab = st.tabs(
             ['解析文本', '关系图', '智能查询', '对象列表', '原文']
         )
+
         with insert_tab:
-            st.title('选择文件')
+            st.header("步骤 2: 上传并解析单个文档")
             
-            # 定义你的 after 回调函数，和原始代码一模一样
-            def after(res): # res 将会是一个文件路径列表
-                st.info('正在处理...')
-                try:
-                    # 调用 insert，不带关键字参数！
-                    asyncio.run(rag.insert(res))
-                    st.success('完成！')
-                except Exception as e:
-                    st.error("处理文件时出错！")
-                    st.exception(e)
-            
-            # 调用我们创建的 web_muti_input 来替代你原来的 muti_input
-            web_muti_input(after)
+            # 这就是你 muti_input 的云端版本
+            uploaded_file = st.file_uploader(
+                "请选择一个文件进行解析", 
+                type=['txt', 'md', 'pdf', 'docx']
+            )
+
+            if uploaded_file is not None:
+                st.write(f"已选择文件: `{uploaded_file.name}`")
+                
+                if st.button("开始解析此文件", type="primary"):
+                    content = ""
+                    try:
+                        file_type = uploaded_file.name.split('.')[-1].lower()
+                        
+                        with st.spinner(f"正在从 {file_type} 文件中提取文本..."):
+                            if file_type == 'pdf':
+                                content = extract_text_from_pdf(BytesIO(uploaded_file.getvalue()))
+                            elif file_type == 'docx':
+                                content = extract_text_from_docx(BytesIO(uploaded_file.getvalue()))
+                            else:
+                                content = uploaded_file.getvalue().decode("utf-8")
+                        
+                        st.success("文本提取成功！")
+
+                        with st.spinner("正在处理文本并构建知识图谱..."):
+                            # --- 最终的、正确的 insert 调用 ---
+                            # 直接把提取出的字符串内容传进去
+                            rag.insert(content)
+                        
+                        st.session_state.graph_generated = True
+                        st.success("图谱已更新！可以前往'关系图'标签页查看。")
+
+                    except Exception as e:
+                        st.error(f"处理文件时发生严重错误！")
+                        st.exception(e)
+
 
         with graph_tab:
-            graph_viz(path)
-
+            if not st.session_state.graph_generated:
+                st.info("请先在 '解析文本' 标签页中上传并解析一个文件。")
+            else:
+                graph_viz(path)
+        
+        # ... 其他标签页逻辑 (可以加上 graph_generated 的检查) ...
         with query_tab:
-            st.title('智能查询')
-            prompt = st.text_input('输入任何问题')
-            if st.button('查询'):
-                if prompt:
-                    st.text(rag.query(prompt, param=QueryParam(mode="naive")))
-
+            if not st.session_state.graph_generated:
+                st.info("请先在 '解析文本' 标签页中生成图谱。")
+            else:
+                st.header('智能查询')
+                prompt = st.text_input('输入任何问题', placeholder="例如：王超杰是谁？")
+                if st.button('查询'):
+                    if prompt:
+                        with st.spinner("正在思考..."):
+                            answer = rag.query(prompt, param=QueryParam(mode="naive"))
+                            st.markdown(answer)
+                    else:
+                        st.warning("请输入您的问题。")
         with obj_tab:
-            obj_viz(path)
-
+            if not st.session_state.graph_generated:
+                st.info("请先在 '解析文本' 标签页中生成图谱。")
+            else:
+                obj_viz(path)
+        
         with origin_tab:
-            data_viz(path)
-
+            if not st.session_state.graph_generated:
+                st.info("请先在 '解析文本' 标签页中生成图谱。")
+            else:
+                data_viz(path)
 
 if __name__ == "__main__":
     main()
-    
