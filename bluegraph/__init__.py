@@ -28,7 +28,7 @@ def main():
     # --- 步骤 1: 创建项目工作目录 ---
     if not st.session_state.rag_instance:
         st.header("步骤 1: 创建一个新项目")
-        st.info("在云端，我们需要先创建一个工作空间来存放您的图谱。")
+        st.info("请先创建一个工作空间来存放您的图谱。")
         
         project_name = st.text_input("给您的项目起个名字", value="my_reading_project")
 
@@ -79,25 +79,17 @@ def main():
                         
                         st.success("文本提取成功！")
 
-                        # =======================================================
-                        # 这是集成了强制等待和文件检查的调试逻辑
-                        # =======================================================
-                        with st.spinner("正在处理文本并构建知识图谱... (包含调试等待)"):
+                        with st.spinner("正在处理文本并构建知识图谱... "):
                             # 1. 调用 insert
-                            st.info("1. 正在调用 `rag.insert(content)`...")
                             rag.insert(content)
-                            st.info("2. `rag.insert` 调用已返回，无异常。")
 
                             # 2. 强制等待
                             wait_time = 10  # 让我们等待10秒，给足后台时间
-                            st.info(f"3. 强制等待 {wait_time} 秒，以便后台任务完成...")
                             
                             progress_bar = st.progress(0)
                             for i in range(wait_time):
                                 time.sleep(1)
                                 progress_bar.progress((i + 1) / wait_time)
-                            
-                            st.info("4. 等待结束。")
 
                             # 3. 检查文件是否存在
                             graph_file_path = os.path.join(path, "graph_chunk_entity_relation.graphml")
@@ -114,23 +106,18 @@ def main():
                                     st.warning(f"当前 `{path}` 目录内容: `{files_in_dir}`")
                                 else:
                                     st.error(f"严重错误：工作目录 `{path}` 本身都消失了！")
-                        # =======================================================
-                        # 调试逻辑结束
-                        # =======================================================
-
+                        
                     except Exception as e:
-                        st.error(f"处理文件时发生严重错误！")
+                        st.error(f"处理文件时发生错误！")
                         st.exception(e)
 
 
         with graph_tab:
-            # (这部分代码保持不变)
             if not st.session_state.graph_generated:
                 st.info("请先在 '解析文本' 标签页中上传并解析一个文件。")
             else:
                 graph_viz(path)
         
-        # ... 其他标签页逻辑保持不变 ...
         with query_tab:
             if not st.session_state.graph_generated:
                 st.info("请先在 '解析文本' 标签页中生成图谱。")
