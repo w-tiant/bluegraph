@@ -1,10 +1,10 @@
 import streamlit as st
 import os
+import time  # 引入 time 模块
 from lightrag import QueryParam
 
 # 你的其他模块导入
 from .rag import main as rag_init
-# from .muti_input import muti_input # 我们不再需要导入这个了
 from .graph_viz import view as graph_viz
 from .obj_viz import func as obj_viz
 from .data_viz import func as data_viz
@@ -25,7 +25,6 @@ def main():
     if 'graph_generated' not in st.session_state:
         st.session_state.graph_generated = False
 
-
     # --- 步骤 1: 创建项目工作目录 ---
     if not st.session_state.rag_instance:
         st.header("步骤 1: 创建一个新项目")
@@ -35,12 +34,10 @@ def main():
 
         if st.button("创建并开始", type="primary"):
             with st.spinner("正在创建工作目录并初始化引擎..."):
-                # 使用项目名创建唯一的临时目录
                 temp_dir = project_name
                 if not os.path.exists(temp_dir):
                     os.makedirs(temp_dir)
                 
-                # 初始化 RAG，仅仅告诉它工作目录是哪里
                 st.session_state.rag_instance = rag_init(temp_dir)
                 st.session_state.project_path = temp_dir
             
@@ -59,7 +56,6 @@ def main():
         with insert_tab:
             st.header("步骤 2: 上传并解析单个文档")
             
-            # 这就是你 muti_input 的云端版本
             uploaded_file = st.file_uploader(
                 "请选择一个文件进行解析", 
                 type=['txt', 'md', 'pdf', 'docx']
@@ -83,13 +79,44 @@ def main():
                         
                         st.success("文本提取成功！")
 
-                        with st.spinner("正在处理文本并构建知识图谱..."):
-                            # --- 最终的、正确的 insert 调用 ---
-                            # 直接把提取出的字符串内容传进去
+                        # =======================================================
+                        # 这是集成了强制等待和文件检查的调试逻辑
+                        # =======================================================
+                        with st.spinner("正在处理文本并构建知识图谱... (包含调试等待)"):
+                            # 1. 调用 insert
+                            st.info("1. 正在调用 `rag.insert(content)`...")
                             rag.insert(content)
-                        
-                        st.session_state.graph_generated = True
-                        st.success("图谱已更新！可以前往'关系图'标签页查看。")
+                            st.info("2. `rag.insert` 调用已返回，无异常。")
+
+                            # 2. 强制等待
+                            wait_time = 10  # 让我们等待10秒，给足后台时间
+                            st.info(f"3. 强制等待 {wait_time} 秒，以便后台任务完成...")
+                            
+                            progress_bar = st.progress(0)
+                            for i in range(wait_time):
+                                time.sleep(1)
+                                progress_bar.progress((i + 1) / wait_time)
+                            
+                            st.info("4. 等待结束。")
+
+                            # 3. 检查文件是否存在
+                            graph_file_path = os.path.join(path, "graph_chunk_entity_relation.graphml")
+                            
+                            st.info(f"5. 正在检查文件是否存在于: `{graph_file_path}`")
+                            if os.path.exists(graph_file_path):
+                                st.success("✅ 文件已成功找到！图谱生成完毕。")
+                                st.session_state.graph_generated = True
+                            else:
+                                st.error("❌ 等待后，文件依然未找到！")
+                                # 顺便看一下目录里到底有什么
+                                if os.path.exists(path):
+                                    files_in_dir = os.listdir(path)
+                                    st.warning(f"当前 `{path}` 目录内容: `{files_in_dir}`")
+                                else:
+                                    st.error(f"严重错误：工作目录 `{path}` 本身都消失了！")
+                        # =======================================================
+                        # 调试逻辑结束
+                        # =======================================================
 
                     except Exception as e:
                         st.error(f"处理文件时发生严重错误！")
@@ -97,12 +124,13 @@ def main():
 
 
         with graph_tab:
+            # (这部分代码保持不变)
             if not st.session_state.graph_generated:
                 st.info("请先在 '解析文本' 标签页中上传并解析一个文件。")
             else:
                 graph_viz(path)
         
-        # ... 其他标签页逻辑 (可以加上 graph_generated 的检查) ...
+        # ... 其他标签页逻辑保持不变 ...
         with query_tab:
             if not st.session_state.graph_generated:
                 st.info("请先在 '解析文本' 标签页中生成图谱。")
