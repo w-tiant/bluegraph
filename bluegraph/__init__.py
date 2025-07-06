@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import asyncio
 # import tkinter as tk
 # from tkinter import filedialog
 from lightrag import QueryParam
@@ -45,15 +46,26 @@ def main():
             file_path = os.path.join(temp_dir, uploaded_file.name)
             with open(file_path, "wb") as f:
                 f.write(uploaded_file.getbuffer())
+
+        with st.spinner("步骤 1/2: 正在初始化 RAG 引擎..."):
+            rag_instance = rag_init(temp_dir)
         
-        # 显示处理状态
-        with st.spinner("正在解析文档并构建知识图谱，请稍候..."):
-            # 使用包含上传文件的临时目录路径来初始化 RAG 引擎
-            st.session_state.rag_instance = rag_init(temp_dir)
-            st.session_state.project_path = temp_dir
+        with st.spinner("步骤 2/2: 正在处理文档并构建知识图谱..."):
+            try:
+                # [!] 关键：在这里立即调用 insert 方法处理首次上传的文件
+                # LightRAG 的 insert 可能是异步的，所以我们用 asyncio.run
+                # 假设它接受一个名为 documents 的文件路径列表参数
+                asyncio.run(rag_instance.insert(documents=file_paths_to_process))
+                st.success("知识图谱构建成功！")
+
+            except Exception as e:
+                st.error("在构建图谱过程中发生错误！")
+                st.exception(e) # 打印详细的错误信息
         
-        st.success("项目初始化成功！现在可以开始探索了。")
-        # 强制刷新一下界面，以展示下面的主内容区
+        # 保存成功初始化的实例和路径
+        st.session_state.rag_instance = rag_instance
+        st.session_state.project_path = temp_dir
+
         st.rerun()
 
     # --- 主内容区 ---
